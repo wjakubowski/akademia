@@ -133,6 +133,30 @@ public:
 
 
 
+///
+
+zakladki:
+
+
+
+
+https://github.com/gibsjose/cpp-cheat-sheet/blob/master/Data%20Structures%20and%20Algorithms.md
+https://en.wikipedia.org/wiki/Bucket_sort
+https://pl.wikipedia.org/wiki/Sortowanie_przez_zliczanie
+https://pl.wikipedia.org/wiki/Kategoria:Algorytmy_grafowe
+https://pl.wikipedia.org/wiki/SOLID_(programowanie_obiektowe)
+https://web.archive.org/web/20150905081103/http://www.objectmentor.com/resources/articles/dip.pdf
+https://pl.wikipedia.org/wiki/Unified_Modeling_Language
+https://pl.wikipedia.org/wiki/Diagram_klas
+https://stackoverflow.com/questions/12854778/abstract-class-vs-interface-in-c
+
+
+
+
+
+
+
+
 
 
 
