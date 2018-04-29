@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <iomanip>
+#include <chrono>
 
 using namespace std;
 
@@ -215,6 +217,70 @@ void f2()
 
 
 
+class C1{
+    int x;
+    long y;
+    int z;
+};
+
+class C2{
+    int x;
+    int z;
+    long y;
+};
+
+class C3{
+};
+
+class C4{
+    char c;
+};
+
+
+int ackerman(int m, int n)
+{
+    if(m==0)
+        return n+1;
+    else
+    {
+        if(m>0 && n==0)
+            return ackerman(m-1,1);
+        else
+            return ackerman(m-1,ackerman(m,n-1));
+    }
+}
+
+unsigned long factorial(unsigned long n)
+{
+    //cout << n << endl;
+    return (n==0)?1:n*factorial(n-1);
+}
+
+unsigned long fib(unsigned long n)
+{
+    if(n==0)
+        return 0;
+    else if(n==1)
+        return 1;
+    else
+        return fib(n-1)+fib(n-2);
+}
+
+unsigned long miez_czas(unsigned int arg, unsigned long (*fun)(unsigned long))
+{
+
+    using ns = chrono::nanoseconds;
+    using get_time = chrono::steady_clock;
+
+    auto start = get_time::now();
+    fun(arg);
+    auto end = get_time::now();
+    auto diff = end - start;
+    //cout << "Elapsed time is : " << chrono::duration_cast<ns>(diff).count() << " ns " << endl;
+    return chrono::duration_cast<ns>(diff).count();
+}
+
+
 int main()
 {
     ///TO JEST POCZATEK TRESCI Z ZAJEC
@@ -297,10 +363,115 @@ int main()
     //unsigned example_unsigned = 2049;
     cout << "unsigned: " << example_unsigned << " to binary: " << unsigned2bits(example_unsigned,true) << endl;
     cout << "-----------------------------------------------" << endl;
-    cout << "binary: " << binary_str << " to unsigned: " << bits2unsigned(binary_str,true) << endl;
+    cout << "binary: " << binary_str << " to unsigned: " << bits2unsigned(binary_str,true) << endl;*/
+
+
+    //f2();
+    /*
+    unsigned u = 1;
+    int ii = 1;
+
+    cout << (u) << endl;
+    cout << (ii) << endl;
+
+    cout << (u<<1) << endl;
+    cout << (ii<<1) << endl;
+
+    cout << (u) << endl;
+    cout << (ii) << endl;
+
+    u <<= 31;
+    ii <<= 31;
+
+    cout << (u) << endl;
+    cout << (ii) << endl;
+
+    u >>= 31;
+    ii >>= 31;
+
+    cout << u << endl;
+    cout << ii << endl;
+
+    printIntsFromRawMem((char *) &ii,4);
+
+    unsigned wzorzec_bitowy = 0x1234;
+    unsigned maska = 0x00f0;
+    unsigned rzut = wzorzec_bitowy & maska;
+    cout << endl << rzut << endl;
+    rzut >>= 4;
+    cout << rzut << endl;
+
+    int a1[]{1,2,3,4,5};
+
+    short * p1 = (short *) a1;
+
+    for(int i=0;i<10;++i){
+        cout << *(p1+i) << endl;
+    }
+
+
+    cout << endl << "rozmiary klas C1-4:" << endl << sizeof(C1) << endl;
+    cout << sizeof(C2) << endl;
+    cout << sizeof(C3) << endl;
+    cout << sizeof(C4) << endl;
+
+    //w klasie jest 1 bajt mimo pustosci klasy bo wskaznik na klase musi na cos pokazywac
+    C3 * p2 = new C3;
+    cout << p2 << endl << sizeof(p2) << endl;
+
+
+    cout << "ackerman(2,2):\t" << ackerman(2,2) << endl;
+    cout << "ackerman(3,3):\t" << ackerman(3,3) << endl;
+    //cout << "ackerman(4,1):\t" << ackerman(4,1) << endl;
+    cout << "factorial(4):\t"  << factorial(4)  << endl;
+
+    unsigned long i = 0xFFFFFFFFFFFFFFFF;
+
+    double d = i;
+    cout << std::setprecision(22) << i << '\t' << d << endl;
+    printf("%lu \t%f",i,d);
+
+    double d2 = (int)123456789;
+    cout << endl;
+    printf("%d \t%f",(int)123456789,d2);
+
+    cout << endl << static_cast<double>(123123) << endl;
+    cout << static_cast<int>(33.3) << endl;*/
+
+
+    /*
+    #include <chrono>
+
+    using namespace std;
+
+    int main()
+    {
+        using ns = chrono::nanoseconds;
+        using get_time = chrono::steady_clock;
+
+        auto start = get_time::now();
+        //...
+        auto end = get_time::now();
+        auto diff = end - start;
+        cout << "Elapsed time is : " << chrono::duration_cast<ns>(diff).count() << " ns " << endl;
+        return 0;
+    }
     */
 
-    f2();
+
+
+
+    for(int i=0;i<10;i+=1)
+    {
+        cout << i << '\t' << miez_czas(i, fib) ;
+        //cout << endl;
+        //cout << i;
+        cout << miez_czas(i,factorial) << endl;
+    }
+
+    //for(int i=0;i<100;++i)
+      // cout << i << '\t' << factorial(i) << endl;
+
 
     return 0;
 
