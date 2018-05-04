@@ -1,35 +1,11 @@
 #include <iostream>
+#include "tests.h"
+#include <gtest/gtest.h>
 
 using namespace std;
 
 
-/*
-Do zaimplementowania:
 
-plik .h
-
-do edytowania - punkt startowy
-trzeba to uogolniac - dwukierunkowo, szablon dla wartosci, mozna robic TDD, mozna trzymac liczbe elementow*/
-
-#include <string>
-
-class List {
-    struct Node {
-        int value;
-        Node *pNext;
-    };
-
-    Node *pHead;
-public:
-    List();
-    List(int const arr[], int size);
-    ~List();
-    void insert(int value);
-    void reverse();//moga byc 2 wersje: statyczna przyjmuje liste i zwraca odwrucona, druga odwraca sama siebie
-    string toString();
-    bool contains(int element);
-    // ...
-};
 
 
 
@@ -41,7 +17,7 @@ public:
 //najlepiej pisac rekursyjnie nie iteracyjnie
 //mozna tez sprobowac przeciazyc operatory np +=
 
-class BinSearchTree {
+/*class BinSearchTree {
     struct BSTNode
     {
         int value;
@@ -60,10 +36,12 @@ public:
     bool contains();
     void mirror();//odbicie wagami wzglendem pionowej osi
     // ...
-};
+};*/
+
 
 int main(int argc, char *argv[])
 {
+    ::testing::InitGoogleTest(&argc, argv);
     cout << "Hello World!" << endl;
-    return 0;
+    return RUN_ALL_TESTS();
 }
