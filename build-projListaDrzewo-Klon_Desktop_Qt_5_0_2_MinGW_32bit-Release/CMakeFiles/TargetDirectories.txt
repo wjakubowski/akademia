@@ -1,3 +1,0 @@
-C:/Users/Wojciech/Dropbox/akademia/akademia/build-projListaDrzewo-Klon_Desktop_Qt_5_0_2_MinGW_32bit-Release/CMakeFiles/projListaDrzewo.dir
-C:/Users/Wojciech/Dropbox/akademia/akademia/build-projListaDrzewo-Klon_Desktop_Qt_5_0_2_MinGW_32bit-Release/CMakeFiles/edit_cache.dir
-C:/Users/Wojciech/Dropbox/akademia/akademia/build-projListaDrzewo-Klon_Desktop_Qt_5_0_2_MinGW_32bit-Release/CMakeFiles/rebuild_cache.dir
