@@ -1,12 +1,5 @@
-#ifndef TESTS_H
-#define TESTS_H
-
-#include <gtest/gtest.h>
-#include <gmock/gmock-matchers.h>
+#include "gtest/gtest.h"
 #include "list.h"
-
-using namespace testing;
-using namespace std;
 
 TEST(constructors, emptyConstructor)
 {
@@ -172,7 +165,3 @@ TEST(methods, removeOnLastPosition)
     list4.remove();
     EXPECT_TRUE(List::equal(list4,tableAfter4,2));
 }
-
-
-
-#endif // TESTS_H
