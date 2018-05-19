@@ -26,6 +26,10 @@ public:
     explicit Literal(double value): value(value){}
     double eval() const override;
     string toString() const;
+    double getValue() const
+    {
+        return value;
+    }
 };
 
 class BinaryOperator : public Expression
@@ -60,5 +64,11 @@ public:
     double eval() const override;
     string toString() const override;
 };
+
+/*ostream& operator << (ostream& os, const Expression & e)
+{
+
+}*/
+
 
 #endif // EXPRESSION_H

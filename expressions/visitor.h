@@ -17,12 +17,28 @@ public:
 
 class Printer : public Visitor
 {
+    ostream& os;
     void visit(const Expression& e) const override;
+
+   public:
+    Printer(ostream & os):os(os){}
 };
 
 class Evaluator : public Visitor
 {
     void visit(const Expression& e) const override;
 };
+
+/*
+
+class AltEvaluator : public Visitor
+{
+    double value;
+public:
+    void visit(const Literal& e)
+    {
+        value = e.eval();
+    }
+};*/
 
 #endif // VISITOR_H

@@ -13,7 +13,7 @@ using namespace std;
 //nie zewoeosc mianownika
 //jak mianownik <0 mnozymy gore i dol przez -1
 
-int nwd(int i1, int i2);
+int nwd(int a, int b);
 //int nww(int i1, int i2);
 
 
@@ -23,19 +23,15 @@ class Rational
     int denominator;
 
 public:
-    Rational(int nominator, int denominator):nominator{nominator}, denominator{denominator}{}
+    Rational(int nominator=0, int denominator=1):nominator{nominator}, denominator{denominator}{}
 
-    Rational(int n): Rational{n,1}{}
+    //Rational(int n): Rational{n,1}{}
 
     int getNominator(){return nominator;}
     int getDenominator(){return denominator;}
 
     //modyfikujace w ciele klasy
-    Rational& operator += (Rational a)
-    {
-        //modyfikacje
-        return *this;
-    }
+    Rational& operator += (Rational a);
 
 
 

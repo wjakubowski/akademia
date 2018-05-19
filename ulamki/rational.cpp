@@ -3,16 +3,18 @@
 #include <cmath>
 #include <iostream>
 
-int nwd(int i1, int i2)
+int nwd(int a, int b)
 {
-    while(i1!=i2)
-    {
-        i1 = min(i1,i2);
-        i2 = max(i1,i2);
-        cout << i1 << "\t" << i2 << endl;
-        i2 = i2-i1;
+    while(a!=b)
+       if(a>b)
+           a-=b; //lub a = a - b;
+       else
+           b-=a; //lub b = b-a
+    return a; // lub b - obie zmienne przechowują wynik NWD(a,b)
+}
 
-
-    }
-    return i2;
+Rational& Rational::operator += (Rational a)
+{
+    //nominator+=a.*denominator;
+    return *this;
 }

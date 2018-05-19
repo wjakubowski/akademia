@@ -72,6 +72,21 @@ unique_ptr<Expression> randomExpression()
 }
 
 /*
+double eval_expression(const Expression e)
+{
+    if(const Literal* lit = dynamic_cast<const Literal*>(e))
+    {
+        return lit->getValue();
+    } else if(const Add add = dynamic_cast<const Add*>(e))
+    {
+        return eval_expression( add.left ) + eval_expression( add.right);
+    } else if(const Multiply multiply = dynamic_cast<const Multiply*>(e))
+    {
+        return eval_expression( multiply.left ) * eval_expression( multiply.right);
+    }
+}/*
+
+/*
 void f(Rational r)
 {
 
@@ -110,7 +125,7 @@ int main()
 
 
 
-    Printer p{};
+    Printer p{cout};
     Evaluator ev{};
     cout << endl;
     add->accept(ev);
