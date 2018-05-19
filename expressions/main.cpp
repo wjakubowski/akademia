@@ -2,14 +2,52 @@
 #include <memory>
 #include <random>
 #include <ctime>
+#include <string>
+#include <vector>
+#include <sstream>
 #include "visitor.h"
 #include "expression.h"
 
 using namespace std;
 
+vector<string> split(string str)
+{
+    string buf;
+    stringstream ss(str);
+    vector<string> tokens;
+    while (ss >> buf)
+        tokens.push_back(buf);
+    return tokens;
+}
 
+unique_ptr<Expression> polishNotationExpression(string str_expr)
+{
+    vector<string> parts = split(str_expr);
+    int pos = 0;
+    unique_ptr<Expression> tmp1, tmp2;
 
-
+    while(pos < parts.size())
+    {
+        cout << parts[pos] << endl;
+        if(parts[pos] == "*")
+        {
+            tmp1 = move(unique_ptr<Expression>{new Multiply(move(tmp1), move(tmp2))});
+        }
+        else if(parts[pos] == "+")
+        {
+            tmp1 = move(unique_ptr<Expression>{new Add(move(tmp1), move(tmp2))});
+        }
+        else
+        {
+            if(tmp1)
+                tmp2 = move(unique_ptr<Expression>{new Literal(stod(parts[pos]))});
+            else
+                tmp1 = move(unique_ptr<Expression>{new Literal(stod(parts[pos]))});
+        }
+        ++pos;
+    }
+    return tmp1;
+}
 
 
 unique_ptr<Expression> randomExpression()
@@ -74,8 +112,10 @@ int main()
 
     Printer p{};
     Evaluator ev{};
+    cout << endl;
     add->accept(ev);
     add->accept(p);
+    cout << endl;
 
 
 
@@ -98,6 +138,12 @@ int main()
 //    cout << "random expresion: " << rand_expr->toString() << endl;
 
 
+    string reversePolishNotation = "2 3 + 7 *";
+
+    unique_ptr<Expression> rpn{move(polishNotationExpression(reversePolishNotation))};
+
+    cout << rpn->eval() << endl;
+    cout << rpn->toString() << endl;
 
 
     return 0;
