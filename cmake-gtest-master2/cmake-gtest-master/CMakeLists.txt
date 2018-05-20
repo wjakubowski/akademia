@@ -25,6 +25,8 @@ add_executable(exceptions src/exceptions.cpp)
 add_executable(guarantees src/guarantees.cpp)
 add_executable(templates src/templates.cpp)
 add_executable(resources src/resources.cpp)
+add_executable(iters src/iters.cpp)
+add_executable(algos src/algos.cpp)
 
 #add_subdirectory(lib/gtest)
 #add_subdirectory(test)

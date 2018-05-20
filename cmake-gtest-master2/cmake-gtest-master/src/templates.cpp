@@ -71,14 +71,31 @@ void C::f<int>() { };
 
 
 // Template template methods
-template <typename T>
+/*template <typename T>
 struct D {
     template <typename U> void f();
 };
 
 template <typename T>
-template <typename U>
-void D<T>::f() { }
+//template <typename U>
+void D<T>::f() { }*/
+
+
+template<class T>
+class Complex {
+    T re, im;
+public:
+    Complex(T re, T im): re(re), im(im){}
+
+    template<class U>
+    friend std::ostream& operator << (std::ostream& os, Complex<U>& z);
+};
+
+
+template<class T>
+std::ostream& operator << (std::ostream& os, Complex<T>& z){
+    return os << z.re << " +i " << z.im;
+}
 
 
 int main() {
